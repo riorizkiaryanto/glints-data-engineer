@@ -22,18 +22,22 @@ In this case, I assume **sources** or Database X as the master database, while *
 Another assumption that I made in this case is database **targets** will only contains the data last 7 days from **sources** database. So, the migration process will only move the data from **sources** database within the last 7 days.
 
 Table **sales_record** will looks like below
+
+
 ![This is image](./assets/table_source.png)
 
 ## Migration
 
 To run this repo, first you need to run the docker-compose.yaml file. Below are the steps to run the migration process from **sources** to **targets** database.
-1. Run command <sup>docker-compose up</sup>. This command should be run in terminal inside the directory of the repo. This command will run the airflow-webserver inside the docker. 
-2. Access the airflow-webserver in <sup>http://localhost:5884/</sup>
+1. Run command **docker-compose up**. This command should be run in terminal inside the directory of the repo. This command will run the airflow-webserver inside the docker. 
+2. Access the airflow-webserver in **http://localhost:5884/**
 3. Log in using username **airflow** and password **airflow**
 4. There are two DAG named **postgres_operator** and **postgres_migration** 
 5. First, execute DAG named **postgres_operator**. This script will generate table **sales_record** in both **sources** and **targets** database. This also generate dummy data in for the table inside **sources** database
 6. Skip the previous step if we already used the dump files provided before
 7. Lastly, just need to execute **postgres_migration** to move the last 7-days from table **sales_record** in **sources** database to table with exactly same name but stored in **targets** database
 8. If run successfully, we will get the table below
+
+
 ![This is image](./assets/table_target.png)
 

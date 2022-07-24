@@ -41,3 +41,6 @@ To run this repo, first you need to run the docker-compose.yaml file. Below are 
 
 ![This is image](./assets/table_target.png)
 
+Thank you!
+Regards.
+
